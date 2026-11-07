@@ -1,0 +1,16 @@
+services:
+  api:
+    build:
+      context: .
+      target: runtime
+    ports:
+      - "8000:8000"
+    environment:
+      # Pins the clock so the 2026-09-15 sample data is "fresh" for the demo.
+      NUBARA_FIXED_NOW: "2026-09-15T11:02:35Z"
+
+  tests:
+    build:
+      context: .
+      target: test
+    profiles: ["test"]
